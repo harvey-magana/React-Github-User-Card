@@ -24,7 +24,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        Start here...
+        <h1>Harvey's Github Assignment</h1>
+        <div>{console.log(typeof this.state.user)}</div>
       </div>
     );
   }
