@@ -4,27 +4,26 @@ import './App.css';
 
 class App extends React.Component {
   state = {
-    user: []
+    followers: []
   }
 
   componentDidMount() {
-    fetch("https://api.github.com/users/harvey-magana")
+    fetch("https://api.github.com/users/harvey-magana/followers")
     .then((res) =>  res.json())
     .then((json) => {
-      console.log(json);
-      this.setState({ user: json });
+      this.setState({ followers: json });
     })
 
     .catch((err) => console.error("fail: ", err.message));
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if(prevState.id !== this.state.user.id) {
+    if(prevState.id !== this.state.followers.id) {
       fetch("https://api.github.com/users/harvey-magana/followers")
       .then((res) =>  res.json())
       .then((json) => {
-        console.log(json);
-        this.setState({ user: json });
+        console.log(json)
+        this.setState({ followers: json });
       })
     }
   }
@@ -35,9 +34,13 @@ class App extends React.Component {
 
   render() {
     return (
+      
     <div className="App">
       <h1>Harvey's Github Assignment</h1>
-        <CardList users={this.state.user} />
+        <div>
+          {/*console.log(this.state.followers)*/}
+          <CardList followers={this.state.followers} />
+        </div>
     </div>
     )
   }
