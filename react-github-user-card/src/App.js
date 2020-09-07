@@ -1,4 +1,5 @@
 import React from 'react';
+import CardList from './components/CardList';
 import './App.css';
 
 class App extends React.Component {
@@ -8,14 +9,25 @@ class App extends React.Component {
 
   componentDidMount() {
     fetch("https://api.github.com/users/harvey-magana")
-      .then((data) => {
-        console.log(data)
-        this.setState({ user: data });
-      })
-      .catch((err) => console.error("fail: ", err.message));
+    .then((res) =>  res.json())
+    .then((json) => {
+      console.log(json);
+      this.setState({ user: json });
+    })
+
+    .catch((err) => console.error("fail: ", err.message));
   }
-  
-  componentDidUpdate() {}
+
+  componentDidUpdate(prevProps, prevState) {
+    if(prevState.id !== this.state.user.id) {
+      fetch("https://api.github.com/users/harvey-magana/followers")
+      .then((res) =>  res.json())
+      .then((json) => {
+        console.log(json);
+        this.setState({ user: json });
+      })
+    }
+  }
 
   handleUserChange = (e) => {}
 
@@ -23,11 +35,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <h1>Harvey's Github Assignment</h1>
-        <div>{console.log(typeof this.state.user)}</div>
-      </div>
-    );
+    <div className="App">
+      <h1>Harvey's Github Assignment</h1>
+        <CardList users={this.state.user} />
+    </div>
+    )
   }
 }
 
