@@ -8,7 +8,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch("https://api.github.com/users/harvey-magana/followers")
+    fetch("https://api.github.com/users/taniarascia/followers")
     .then((res) =>  res.json())
     .then((json) => {
       this.setState({ followers: json });
@@ -19,7 +19,7 @@ class App extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if(prevState.id !== this.state.followers.id) {
-      fetch("https://api.github.com/users/harvey-magana/followers")
+      fetch("https://api.github.com/users/taniarascia/followers")
       .then((res) =>  res.json())
       .then((json) => {
         console.log(json)
@@ -38,7 +38,7 @@ class App extends React.Component {
     <div className="App">
       <h1>Harvey's Github Assignment</h1>
         <div>
-          {/*console.log(this.state.followers)*/}
+          {console.log(this.state.followers)}
           <CardList followers={this.state.followers} />
         </div>
     </div>

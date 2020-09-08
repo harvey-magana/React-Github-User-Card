@@ -1,20 +1,19 @@
 import React from 'react';
+import styled from "styled-components";
+import Card from './Card';
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
 
 const CardList = (props) => {
-    console.log(props.followers)
+    //console.log(props.followers)
     return (
-        <div className="App">
-          {props.followers.map((follow) => {
-            return (
-                <div key={follow.id}>
-                <p>{follow.id}</p>
-                <p>{follow.login}</p>
-                <p>{follow.type}</p>
-                <p>{follow.url}</p>
-             </div>
-            )
-          })}
-        </div>
+        <Wrapper>
+            <Card followers={props.followers} />
+        </Wrapper>
     )
 }
 
