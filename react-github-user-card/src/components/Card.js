@@ -42,7 +42,7 @@ const Card = (props) => (
                         <StyledPhoto src={follow.avatar_url} alt={follow.login} />
                         <Description>
                             User Type: {follow.type}
-                            <a href={follow.url}><Button>Github page</Button></a>
+                            <a href={follow.html_url}><Button>Github page</Button></a>
                         </Description>
                     </Wrapper>
                 </div>
