@@ -21,7 +21,7 @@ const Title = styled.h2`
   font-weight: 300;
 `
 const StyledPhoto = styled.img`
-  width: 50%;
+  width: 30%;
   object-fit: cover;
 `
 const Description = styled.p`
